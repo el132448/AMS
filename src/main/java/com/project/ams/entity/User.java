@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-// @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String userName;
     private String userFirstName;
     private String userLastName;
@@ -28,11 +28,11 @@ public class User {
     )
     private Set<Role> role;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
