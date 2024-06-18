@@ -1,6 +1,6 @@
 package com.project.ams.controller;
 
-import com.project.ams.service.UserServiceImpl;
+import com.project.ams.service.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     @PostConstruct
     public void initRoleAndUser() {
-        userServiceImpl.initRoleAndUser();
+        userService.initRoleAndUser();
     }
 
     @GetMapping("/login")
