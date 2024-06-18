@@ -61,10 +61,8 @@ public class UserService implements UserDetailsService {
         User adminUser = new User();
         adminUser.setId(1);
         adminUser.setUserName("admin");
-        adminUser.setEmail("admin@gmail.com");
+        adminUser.setEmail("admin@email.com");
         adminUser.setUserPassword(getEncodedPassword("admin"));
-        adminUser.setUserFirstName("admin");
-        adminUser.setUserLastName("admin");
         Set<Role> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
@@ -72,11 +70,9 @@ public class UserService implements UserDetailsService {
 
         User user = new User();
         user.setId(2);
-        user.setEmail("user1@gmail.com");
-        user.setUserName("user1");
-        user.setUserPassword(getEncodedPassword("user1"));
-        user.setUserFirstName("user1");
-        user.setUserLastName("user1");
+        user.setEmail("user@email.com");
+        user.setUserName("user");
+        user.setUserPassword(getEncodedPassword("user"));
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(userRole);
         user.setRole(userRoles);
