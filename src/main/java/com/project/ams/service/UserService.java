@@ -30,15 +30,15 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    public User registerNewUser(User user){
-//        Role role = roleDao.findById("User").get();
-//        Set<Role> userRoles = new HashSet<>();
-//        userRoles.add(role);
-//        user.setRole(userRoles);
-//        user.setUserPassword(getEncodedPassword(user.getUserPassword()));
-//
-//        return userDao.save(user);
-//    }
+    public User registerNewUser(User user){
+        Role role = roleDao.findByRoleName("User");
+        Set<Role> userRoles = new HashSet<>();
+        userRoles.add(role);
+        user.setRole(userRoles);
+        user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+
+        return userDao.save(user);
+    }
 
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
@@ -47,21 +47,21 @@ public class UserService implements UserDetailsService {
     public void initRoleAndUser() {
 
         Role adminRole = new Role();
-        adminRole.setId(1);
+        adminRole.setRoleId(1);
         adminRole.setRoleName("Admin");
         adminRole.setRoleDescription("Admin role");
         roleDao.save(adminRole);
 
         Role userRole = new Role();
-        userRole.setId(2);
+        userRole.setRoleId(2);
         userRole.setRoleName("User");
         userRole.setRoleDescription("Default role for newly created record");
         roleDao.save(userRole);
 
         User adminUser = new User();
-        adminUser.setId(1);
+        adminUser.setUserId(1);
         adminUser.setUserName("admin");
-        adminUser.setEmail("admin@email.com");
+        adminUser.setUserEmail("admin@email.com");
         adminUser.setUserPassword(getEncodedPassword("admin"));
         Set<Role> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
@@ -69,8 +69,8 @@ public class UserService implements UserDetailsService {
         userDao.save(adminUser);
 
         User user = new User();
-        user.setId(2);
-        user.setEmail("user@email.com");
+        user.setUserId(2);
+        user.setUserEmail("user@email.com");
         user.setUserName("user");
         user.setUserPassword(getEncodedPassword("user"));
         Set<Role> userRoles = new HashSet<>();
@@ -81,13 +81,13 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
 
-        User user = userDao.findByEmail(email);
+        User user = userDao.findByUserEmail(userEmail);
         if(user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getUserPassword(), mapRolesToAuthorities(user.getRole()));
+        return new org.springframework.security.core.userdetails.User(user.getUserEmail(), user.getUserPassword(), mapRolesToAuthorities(user.getRole()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){

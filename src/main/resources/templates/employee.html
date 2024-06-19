@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Employee</title>
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <form th:action="@{/deleteEmployee}" method="post">
+        <table>
+            <thead>
+            <tr>
+                <th>選択</th>
+                <th>社員ID</th>
+                <th>入社年月日</th>
+                <th>氏名</th>
+                <th>性別</th>
+                <th>生年月日</th>
+                <th>年齢</th>
+                <th>所属</th>
+                <th>メールアドレス</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee: ${employees}">
+                <td><input type="checkbox" th:value="${employee.id}" name="employeeIds"></td>
+                <td th:text="${employee.id}"></td>
+                <td th:text="${employee.joiningDate}"></td>
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.gender}"></td>
+                <td th:text="${employee.birthDate}"></td>
+                <td th:text="${employee.age}"></td>
+                <td th:text="${employee.department}"></td>
+                <td th:text="${employee.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" value="deleteEmployee">削除</button>
+    </form>
+
+
+</body>
+</html>
