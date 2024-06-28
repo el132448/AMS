@@ -16,4 +16,32 @@ public class EmployeeService {
         return employeeDao.findAll();
     }
 
+    public void deleteEmployeeById(Integer id){
+        employeeDao.deleteById(id);
+    }
+
+    public Employee getEmployeeById(Integer id){
+        if (employeeDao.findById(id).isPresent()){
+            return employeeDao.findById(id).get();
+        }else {
+            throw new EmployeeNotFoundException("Employee with ID " + id + " not found");
+        }
+    }
+
+    public void addEmployee(Employee employee){
+        System.out.println(employee.getId());
+        employeeDao.save(employee);
+        System.out.println(employee.getId());
+    }
+
+    public Long findLargestEmployeeId(){
+        return employeeDao.findLargestEmployeeId() + 1 ;
+    }
+
+}
+
+class EmployeeNotFoundException extends RuntimeException {
+    public EmployeeNotFoundException(String message) {
+        super(message);
+    }
 }

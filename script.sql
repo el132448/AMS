@@ -14,4 +14,12 @@ VALUES
     (10, '1991-01-14', '総務部', 'emp0010@email.com', '女', '2023-02-01', '高橋直人'),
     (11, '1986-06-22', '人事部', 'emp0011@email.com', '男', '2023-01-01', '斎藤理沙');
     
+DELETE FROM ams.user_role;
+DELETE FROM ams.role;
+DELETE FROM ams.user;
 DELETE FROM ams.employee;
+
+DROP TABLE ams.user_role;
+DROP TABLE ams.role;
+DROP TABLE ams.user;
+DROP TABLE ams.employee;

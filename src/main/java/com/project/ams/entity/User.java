@@ -9,11 +9,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
-    private String userName;
-    private String userPassword;
-    @Column(unique = true)
+    private Integer id;
+    @Column(unique = true, nullable = false)
     private String userEmail;
+    @Column(unique = true, nullable = false)
+    private String userPassword;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
@@ -49,15 +49,6 @@ public class User {
     public void setRole(Set<Role> role) {
         this.role = role;
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
 
     public String getUserPassword() {
         return userPassword;

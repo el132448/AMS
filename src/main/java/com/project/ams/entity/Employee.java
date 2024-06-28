@@ -7,15 +7,16 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; // 社員ID (Employee ID)
-    private String joiningDate; // 入社年月日 (Date of Joining)
-    private String name; // 氏名 (Name)
-    private String gender; // 性別 (Gender)
-    private String birthDate; // 生年月日 (Date of Birth)
+    private Integer id;
+    private Integer employeeId; // 社員ID (Employee ID)
+    private String employeeJoiningDate; // 入社年月日 (Date of Joining)
+    private String employeeName; // 氏名 (Name)
+    private String employeeGender; // 性別 (Gender)
+    private String employeeBirthDate; // 生年月日 (Date of Birth)
     @Transient // Not a column in table
-    private int age; // 年齢
-    private String department; // 所属 (Department)
-    private String email; // メールアドレス (Email Address)
+    private int employeeAge; // 年齢
+    private String employeeDepartment; // 所属 (Department)
+    private String employeeEmail; // メールアドレス (Email Address)
 
 //    public void calculateAge() {
 //        if (this.birthDate != null) {
@@ -29,63 +30,67 @@ public class Employee {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getEmployeeId() {
+        return employeeId;
     }
 
-    public String getJoiningDate() {
-        return joiningDate;
+    public void setEmployeeId(Integer employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public void setJoiningDate(String joiningDate) {
-        this.joiningDate = joiningDate;
+    public String getEmployeeJoiningDate() {
+        return employeeJoiningDate;
     }
 
-    public String getName() {
-        return name;
+    public void setEmployeeJoiningDate(String employeeJoiningDate) {
+        this.employeeJoiningDate = employeeJoiningDate;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public String getGender() {
-        return gender;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public String getEmployeeGender() {
+        return employeeGender;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public void setEmployeeGender(String employeeGender) {
+        this.employeeGender = employeeGender;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public String getEmployeeBirthDate() {
+        return employeeBirthDate;
     }
 
-    public String getDepartment() {
-        return department;
+    public void setEmployeeBirthDate(String employeeBirthDate) {
+        this.employeeBirthDate = employeeBirthDate;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public int getEmployeeAge() {
+        return employeeAge;
     }
 
-    public String getEmail() {
-        return email;
+    public void setEmployeeAge(int employeeAge) {
+        this.employeeAge = employeeAge;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getEmployeeDepartment() {
+        return employeeDepartment;
     }
 
-    public int getAge() {
-        return age;
+    public void setEmployeeDepartment(String employeeDepartment) {
+        this.employeeDepartment = employeeDepartment;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public String getEmployeeEmail() {
+        return employeeEmail;
+    }
+
+    public void setEmployeeEmail(String employeeEmail) {
+        this.employeeEmail = employeeEmail;
     }
 }

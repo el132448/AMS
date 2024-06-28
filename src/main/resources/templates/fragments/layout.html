@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Header</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    <header th:fragment="header">
+        <nav>
+            <ul>
+                <li><a th:href="@{/employee}">社員情報一覧</a></li>
+                <li><a th:href="@{/logout}">ログアウト</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <footer th:fragment="footer">
+        <!-- Footer content -->
+        <p><small>Copyright &copy; 2024 勤怠管理システム All Rights Reserved.</small></p>
+    </footer>
+
+</body>
+</html>
