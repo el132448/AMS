@@ -1,6 +1,13 @@
 SELECT * FROM ams.employee;
 
-INSERT INTO `employee` (`id`,`birth_date`, `department`, `email`, `gender`, `joining_date`, `name`)
+INSERT INTO `ams`.`employee`
+(`employee_id`,
+`employee_birth_date`,
+`employee_department`,
+`employee_email`,
+`employee_gender`,
+`employee_joining_date`,
+`employee_name`)
 VALUES
 	(1, '1997-03-02', '総務部', 'emp0001@email.com', '男', '2024-04-01', '中島治紀'),
     (2, '1990-05-15', '営業部', 'emp0002@email.com', '女', '2023-10-15', '山田太郎'),

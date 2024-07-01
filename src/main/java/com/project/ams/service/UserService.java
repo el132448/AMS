@@ -47,13 +47,13 @@ public class UserService implements UserDetailsService {
     public void initRoleAndUser() {
 
         Role adminRole = new Role();
-        adminRole.setRoleId(1);
+        adminRole.setId(1);
         adminRole.setRoleName("Admin");
         adminRole.setRoleDescription("Admin role");
         roleDao.save(adminRole);
 
         Role userRole = new Role();
-        userRole.setRoleId(2);
+        userRole.setId(2);
         userRole.setRoleName("User");
         userRole.setRoleDescription("Default role for newly created record");
         roleDao.save(userRole);

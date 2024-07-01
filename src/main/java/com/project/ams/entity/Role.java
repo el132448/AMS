@@ -12,12 +12,12 @@ public class Role {
     private String roleName;
     private String roleDescription;
 
-    public Integer getRoleId() {
-        return roleId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRoleId(Integer id) {
-        this.roleId = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getRoleName() {

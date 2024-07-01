@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:replace="~{fragments/layout :: header}"></div>
+
+    <section>
+        <h1>基本情報更新</h1>
+        <form th:action="@{/editEmployee}" th:object="${employee}" method="post">
+
+            <label for="id">社員ID</label>
+            <input type="text" id="id" th:field="*{id}" readonly>
+            <br>
+            <label for="joiningDate">入社年月日</label>
+            <input type="text" id="joiningDate" th:field="*{joiningDate}">
+            <br>
+            <label for="name">氏名</label>
+            <input type="text" id="name" th:field="*{name}">
+            <br>
+            <label for="gender">性別</label>
+            <input type="text" id="gender" th:field="*{gender}">
+            <br>
+            <label for="birthDate">生年月日</label>
+            <input type="text" id="birthDate" th:field="*{birthDate}">
+            <br>
+            <label for="department">所属</label>
+            <input type="text" id="department" th:field="*{department}">
+            <br>
+            <label for="email">メールアドレス</label>
+            <input type="text" id="email" th:field="*{email}">
+            <br>
+
+            <button type="submit" value="editEmployee">更新</button>
+        </form>
+    </section>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

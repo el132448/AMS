@@ -10,8 +10,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true, nullable = false)
+
+    @Column(unique = true, nullable = false, length = 100)
     private String userEmail;
+
     @Column(unique = true, nullable = false)
     private String userPassword;
 
@@ -26,12 +28,13 @@ public class User {
     )
     private Set<Role> role;
 
-    public Integer getUserId() {
-        return userId;
+
+    public Integer getId() {
+        return id;
     }
 
     public void setUserId(Integer id) {
-        this.userId = id;
+        this.id = id;
     }
 
     public String getUserEmail() {
