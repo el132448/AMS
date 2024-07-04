@@ -9,32 +9,36 @@
 
     <div class="container">
         <h1>社員情報登録</h1>
-        <form th:action="@{/editEmployee}" method="post">
+        <form th:action="@{/registerEmployee}" method="post">
+            <label for="employeeId">社員ID</label>
+            <input type="text" id="employeeId" th:value="${employeeId}" name="employeeId">
+            <br>
+            <label for="employeeName">氏名</label>
+            <input type="text" id="employeeName" name="employeeName">
+            <br>
+            <input type="radio" id="男" name="employeeGender" value="男">
+            <label for="男">男</label>
+            <input type="radio" id="女" name="employeeGender" value="女">
+            <label for="女">女</label>
+            <input type="radio" id="その他" name="employeeGender" value="その他">
+            <label for="その他">その他</label>
+            <br>
+            <label for="employeeBirthDate">生年月日</label>
+            <input type="date" id="employeeBirthDate" name="employeeBirthDate">
+            <br>
+            <label for="employeeJoiningDate">入社年月日</label>
+            <input type="date" id="employeeJoiningDate" name="employeeJoiningDate">
+            <br>
+            <label for="employeeDepartment">所属</label>
+            <input type="text" id="employeeDepartment" name="employeeDepartment">
+            <br>
+            <label for="employeeEmail">メールアドレス</label>
+            <input type="email" id="employeeEmail" name="employeeEmail">
+            <br>
 
-            <label for="id">社員ID</label>
-            <input type="text" id="id" th:value="${employeeId}" name="id" readonly>
-            <br>
-            <label for="joiningDate">入社年月日</label>
-            <input type="text" id="joiningDate" name="joiningDate">
-            <br>
-            <label for="name">氏名</label>
-            <input type="text" id="name" name="name">
-            <br>
-            <label for="gender">性別</label>
-            <input type="text" id="gender" name="gender">
-            <br>
-            <label for="birthDate">生年月日</label>
-            <input type="text" id="birthDate" name="birthDate">
-            <br>
-            <label for="department">所属</label>
-            <input type="text" id="department" name="department">
-            <br>
-            <label for="email">メールアドレス</label>
-            <input type="text" id="email" name="email">
-            <br>
-
-            <button type="submit" value="registerEmployee">登録</button>
+            <button type="submit">登録</button>
         </form>
+        <p th:text="${errorMessage}" style="color:red"></p>
     </div>
 
     <div th:replace="~{fragments/layout :: footer}"></div>

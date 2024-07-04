@@ -2,29 +2,47 @@ package com.project.ams.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(unique = true, nullable = false)
     private Integer employeeId; // 社員ID (Employee ID)
-    private String employeeJoiningDate; // 入社年月日 (Date of Joining)
+
+    @Column(nullable = false)
     private String employeeName; // 氏名 (Name)
-    private String employeeGender; // 性別 (Gender)
-    private String employeeBirthDate; // 生年月日 (Date of Birth)
-    @Transient // Not a column in table
-    private int employeeAge; // 年齢
+
+    private LocalDate employeeJoiningDate; // 入社年月日 (Date of Joining)
+
+    @Enumerated(EnumType.STRING)
+    private Gender employeeGender; // 性別 (Gender)
+
+    private LocalDate employeeBirthDate; // 生年月日 (Date of Birth)
+
     private String employeeDepartment; // 所属 (Department)
+
     private String employeeEmail; // メールアドレス (Email Address)
 
-//    public void calculateAge() {
-//        if (this.birthDate != null) {
-//            this.age = Period.between(this.birthDate, LocalDate.now()).getYears();
+    @Transient // Not a column in table
+    private Integer employeeAge; // 年齢
+
+//    public void calEmployeeAge() {
+//        if (this.employeeBirthDate != null) {
+//            this.employeeAge = Period.between(this.birthDate, LocalDate.now()).getYears();
 //        } else {
 //            this.age = 0;
 //        }
 //    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    private enum Gender{男, 女, その他} // 性別enum定義
 
     public Integer getId() {
         return id;
@@ -38,11 +56,11 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public String getEmployeeJoiningDate() {
+    public LocalDate getEmployeeJoiningDate() {
         return employeeJoiningDate;
     }
 
-    public void setEmployeeJoiningDate(String employeeJoiningDate) {
+    public void setEmployeeJoiningDate(LocalDate employeeJoiningDate) {
         this.employeeJoiningDate = employeeJoiningDate;
     }
 
@@ -54,27 +72,27 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
-    public String getEmployeeGender() {
+    public Gender getEmployeeGender() {
         return employeeGender;
     }
 
-    public void setEmployeeGender(String employeeGender) {
+    public void setEmployeeGender(Gender employeeGender) {
         this.employeeGender = employeeGender;
     }
 
-    public String getEmployeeBirthDate() {
+    public LocalDate getEmployeeBirthDate() {
         return employeeBirthDate;
     }
 
-    public void setEmployeeBirthDate(String employeeBirthDate) {
+    public void setEmployeeBirthDate(LocalDate employeeBirthDate) {
         this.employeeBirthDate = employeeBirthDate;
     }
 
-    public int getEmployeeAge() {
+    public Integer getEmployeeAge() {
         return employeeAge;
     }
 
-    public void setEmployeeAge(int employeeAge) {
+    public void setEmployeeAge(Integer employeeAge) {
         this.employeeAge = employeeAge;
     }
 

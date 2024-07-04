@@ -9,28 +9,38 @@
 
     <section>
         <h1>基本情報更新</h1>
+
+        <div th:if="${param.success}" style="color: green">成功: 更新が完了しました。</div>
+
         <form th:action="@{/editEmployee}" th:object="${employee}" method="post">
 
-            <label for="id">社員ID</label>
-            <input type="text" id="id" th:field="*{id}" readonly>
+            <label for="employeeId">社員ID</label>
+            <input type="text" id="employeeId" th:field="*{employeeId}" readonly>
             <br>
-            <label for="joiningDate">入社年月日</label>
-            <input type="text" id="joiningDate" th:field="*{joiningDate}">
+            <label for="employeeName">氏名</label>
+            <input type="text" id="employeeName" th:field="*{employeeName}">
             <br>
-            <label for="name">氏名</label>
-            <input type="text" id="name" th:field="*{name}">
+            <label for="employeeGenderMale">男</label>
+            <input type="radio" id="employeeGenderMale" name="employeeGender" value="男"
+                   th:field="*{employeeGender}" th:checked="${employeeGender == '男'}">
+            <label for="employeeGenderFemale">女</label>
+            <input type="radio" id="employeeGenderFemale" name="employeeGender" value="女"
+                   th:field="*{employeeGender}" th:checked="${employeeGender == '女'}">
+            <label for="employeeGenderOther">その他</label>
+            <input type="radio" id="employeeGenderOther" name="employeeGender" value="その他"
+                   th:field="*{employeeGender}" th:checked="${employeeGender == 'その他'}">
             <br>
-            <label for="gender">性別</label>
-            <input type="text" id="gender" th:field="*{gender}">
+            <label for="employeeBirthDate">生年月日</label>
+            <input type="date" id="employeeBirthDate" th:name="employeeBirthDate" th:value="${employee.employeeBirthDate}">
             <br>
-            <label for="birthDate">生年月日</label>
-            <input type="text" id="birthDate" th:field="*{birthDate}">
+            <label for="employeeJoiningDate">入社年月日</label>
+            <input type="date" id="employeeJoiningDate" th:name="employeeJoiningDate" th:value="${employee.employeeJoiningDate}">
             <br>
-            <label for="department">所属</label>
-            <input type="text" id="department" th:field="*{department}">
+            <label for="employeeDepartment">所属</label>
+            <input type="text" id="employeeDepartment" th:field="*{employeeDepartment}">
             <br>
-            <label for="email">メールアドレス</label>
-            <input type="text" id="email" th:field="*{email}">
+            <label for="employeeEmail">メールアドレス</label>
+            <input type="email" id="employeeEmail" th:field="*{employeeEmail}">
             <br>
 
             <button type="submit" value="editEmployee">更新</button>

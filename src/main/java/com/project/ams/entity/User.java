@@ -14,7 +14,7 @@ public class User {
     @Column(unique = true, nullable = false, length = 100)
     private String userEmail;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String userPassword;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -27,11 +27,6 @@ public class User {
             }
     )
     private Set<Role> role;
-
-
-    public Integer getId() {
-        return id;
-    }
 
     public void setUserId(Integer id) {
         this.id = id;
