@@ -12,7 +12,7 @@
 
         <div th:if="${param.success}" style="color: green">成功: 更新が完了しました。</div>
 
-        <form th:action="@{/editEmployee}" th:object="${employee}" method="post">
+        <form th:action="@{/employee/edit}" th:object="${employee}" method="post">
 
             <label for="employeeId">社員ID</label>
             <input type="text" id="employeeId" th:field="*{employeeId}" readonly>

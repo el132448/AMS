@@ -5,10 +5,13 @@ import com.project.ams.entity.Employee;
 import com.project.ams.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Service
 public class EmployeeService {
@@ -16,8 +19,22 @@ public class EmployeeService {
     @Autowired
     private EmployeeDao employeeDao;
 
-    public List<Employee> getAllEmployee(){
-        return employeeDao.findAll();
+    public Page<Employee> getEmployeeByFilters(Integer employeeId, LocalDate joiningDateFrom, LocalDate joiningDateTo, String department, Pageable pageable) {
+        // Build specifications based on the filters
+        Specification<Employee> spec = Specification.where(null);
+
+        if (employeeId != null) {
+            spec = spec.and(EmployeeSpecifications.withEmployeeId(employeeId));
+        }
+        if (joiningDateFrom != null || joiningDateTo != null) {
+            spec = spec.and(EmployeeSpecifications.withJoiningDateRange(joiningDateFrom, joiningDateTo));
+        }
+        if (department != null && !department.isEmpty()) {
+            spec = spec.and(EmployeeSpecifications.withDepartment(department));
+        }
+
+        // Execute the query with filters and pagination
+        return employeeDao.findAll(spec, pageable);
     }
 
     @Transactional // JPA requires that UPDATE, DELETE, and INSERT operations be executed within a transaction

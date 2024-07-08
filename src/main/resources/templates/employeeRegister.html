@@ -9,7 +9,7 @@
 
     <div class="container">
         <h1>社員情報登録</h1>
-        <form th:action="@{/registerEmployee}" method="post">
+        <form th:action="@{/employee/register}" method="post">
             <label for="employeeId">社員ID</label>
             <input type="text" id="employeeId" th:value="${employeeId}" name="employeeId">
             <br>

@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class TrailingSlashInterceptor implements HandlerInterceptor {
 
+    // intercept when "/" is found at the end of url sent
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();

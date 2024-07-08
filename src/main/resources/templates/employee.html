@@ -21,7 +21,41 @@
 
     <section>
         <h1>社員情報一覧</h1>
-        <form th:action="@{/deleteEmployee}" method="post" onsubmit="return validateCheckboxes()">
+
+        <!-- Filter Form -->
+        <form th:action="@{/employee}" method="get" style="margin-bottom: 20px;">
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <!-- Filter by Employee ID -->
+                <div>
+                    <label for="employeeId">社員ID:</label>
+                    <input type="text" id="employeeId" name="employeeId" th:value="${employeeId}">
+                </div>
+
+                <!-- Filter by Joining Date Range -->
+                <div>
+                    <label for="joiningDateFrom">入社年月日 From:</label>
+                    <input type="date" id="joiningDateFrom" name="joiningDateFrom" th:value="${joiningDateFrom}">
+                </div>
+                <div>
+                    <label for="joiningDateTo">To:</label>
+                    <input type="date" id="joiningDateTo" name="joiningDateTo" th:value="${joiningDateTo}">
+                </div>
+
+                <!-- Filter by Department -->
+                <div>
+                    <label for="department">所属:</label>
+                    <input type="text" id="department" name="department" th:value="${department}">
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit">検索</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Delete form & employee list-->
+        <form th:action="@{/employee/delete}" method="post" onsubmit="return validateCheckboxes()">
             <button type="submit" value="deleteEmployee">削除</button>
             <a th:href="@{/employee/registration}">社員情報登録</a>
             <table class="table table-striped">
@@ -56,6 +90,35 @@
                 </tbody>
             </table>
         </form>
+
+        <!-- Pagination Controls -->
+        <div>
+            <ul class="pagination">
+                <!-- Previous Button -->
+                <li th:if="${currentPage > 1}">
+                    <a th:href="${paginationUrl + '&page=' + (currentPage - 1)}">前へ</a>
+                </li>
+
+                <!-- Page Numbers -->
+                <li th:each="i : ${#numbers.sequence(1, totalPages)}"
+                    th:if="${totalPages > 1}">
+                    <span th:if="${i == currentPage}"
+                          th:text="${i}"
+                          th:style="'text-decoration: none; cursor: default;'"
+                    ></span>
+                    <a th:if="${i != currentPage}"
+                       th:href="${paginationUrl + '&page=' + i}"
+                       th:text="${i}"
+                    ></a>
+                </li>
+
+                <!-- Next Button -->
+                <li th:if="${currentPage < totalPages}">
+                    <a th:href="${paginationUrl + '&page=' + (currentPage + 1)}">次へ</a>
+                </li>
+
+            </ul>
+        </div>
     </section>
 
     <div th:replace="~{fragments/layout :: footer}"></div>
