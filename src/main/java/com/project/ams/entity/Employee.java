@@ -28,40 +28,18 @@ public class Employee {
 
     private String employeeEmail; // メールアドレス (Email Address)
 
-    @Transient // Not a column in table
+    // age update on register, restart server and daily base
     private Integer employeeAge; // 年齢
 
-//    public void calEmployeeAge() {
-//        if (this.employeeBirthDate != null) {
-//            this.employeeAge = Period.between(this.birthDate, LocalDate.now()).getYears();
-//        } else {
-//            this.age = 0;
-//        }
-//    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     private enum Gender{男, 女, その他} // 性別enum定義
+
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
     public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
-    }
-
-    public LocalDate getEmployeeJoiningDate() {
-        return employeeJoiningDate;
-    }
-
-    public void setEmployeeJoiningDate(LocalDate employeeJoiningDate) {
-        this.employeeJoiningDate = employeeJoiningDate;
     }
 
     public String getEmployeeName() {
@@ -72,6 +50,30 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getEmployeeId() {
+        return employeeId;
+    }
+
+    public LocalDate getEmployeeBirthDate() {
+        return employeeBirthDate;
+    }
+
+    public void setEmployeeAge(Integer employeeAge) {
+        this.employeeAge = employeeAge;
+    }
+
+    public LocalDate getEmployeeJoiningDate() {
+        return employeeJoiningDate;
+    }
+
+    public void setEmployeeJoiningDate(LocalDate employeeJoiningDate) {
+        this.employeeJoiningDate = employeeJoiningDate;
+    }
+
     public Gender getEmployeeGender() {
         return employeeGender;
     }
@@ -80,20 +82,8 @@ public class Employee {
         this.employeeGender = employeeGender;
     }
 
-    public LocalDate getEmployeeBirthDate() {
-        return employeeBirthDate;
-    }
-
     public void setEmployeeBirthDate(LocalDate employeeBirthDate) {
         this.employeeBirthDate = employeeBirthDate;
-    }
-
-    public Integer getEmployeeAge() {
-        return employeeAge;
-    }
-
-    public void setEmployeeAge(Integer employeeAge) {
-        this.employeeAge = employeeAge;
     }
 
     public String getEmployeeDepartment() {
@@ -110,5 +100,9 @@ public class Employee {
 
     public void setEmployeeEmail(String employeeEmail) {
         this.employeeEmail = employeeEmail;
+    }
+
+    public Integer getEmployeeAge() {
+        return employeeAge;
     }
 }

@@ -55,7 +55,31 @@ public class EmployeeController {
         model.addAttribute("joiningDateTo", joiningDateTo);
         model.addAttribute("department", department);
 
+        // Build the URL for pagination: page controlled by html
+        String paginationUrl = buildPaginationUrl(rows, employeeId, joiningDateFrom, joiningDateTo, department);
+        model.addAttribute("paginationUrl", paginationUrl);
+
         return "employee";
+    }
+
+    private String buildPaginationUrl(int rows, Integer employeeId, LocalDate joiningDateFrom, LocalDate joiningDateTo, String department) {
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromPath("/employee")
+                .queryParam("rows", rows);
+
+        if (employeeId != null) {
+            uriComponentsBuilder.queryParam("employeeId", employeeId);
+        }
+        if (joiningDateFrom != null) {
+            uriComponentsBuilder.queryParam("joiningDateFrom", joiningDateFrom);
+        }
+        if (joiningDateTo != null) {
+            uriComponentsBuilder.queryParam("joiningDateTo", joiningDateTo);
+        }
+        if (department != null && !department.isEmpty()) {
+            uriComponentsBuilder.queryParam("department", department);
+        }
+
+        return uriComponentsBuilder.toUriString();
     }
 
     // Delete employees

@@ -12,12 +12,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Service
 public class EmployeeService {
 
     @Autowired
     private EmployeeDao employeeDao;
+
+//    @Autowired
+//    private EmailService emailService;
 
     public Page<Employee> getEmployeeByFilters(Integer employeeId, LocalDate joiningDateFrom, LocalDate joiningDateTo, String department, Pageable pageable) {
         // Build specifications based on the filters
@@ -53,7 +57,15 @@ public class EmployeeService {
     @Transactional(rollbackFor = DuplicateEmployeeIdException.class)
     public void registerEmployee(Employee employee) throws DuplicateEmployeeIdException {
         try {
+            Integer employeeAge = Period.between(employee.getEmployeeBirthDate(), LocalDate.now()).getYears();
+            employee.setEmployeeAge(employeeAge);
             employeeDao.save(employee);
+
+//            // Send confirmation email
+//            String subject = "Employee Registration Confirmation";
+//            String body = "Dear " + employee.getEmployeeName() + ",\n\nYour registration is successful.\n\nRegards,\nCompany";
+//            emailService.sendEmail(employee.getEmployeeEmail(), subject, body);
+
         } catch (DataIntegrityViolationException e) {
             throw new DuplicateEmployeeIdException("Employee ID already exists");
         }
@@ -70,6 +82,8 @@ public class EmployeeService {
             Integer employeeId = employee.getEmployeeId();
             Integer id = employeeDao.findIdByEmployeeId(employeeId);
             employee.setId(id);
+            Integer employeeAge = Period.between(employee.getEmployeeBirthDate(), LocalDate.now()).getYears();
+            employee.setEmployeeAge(employeeAge);
             employeeDao.save(employee);
         } catch (DataIntegrityViolationException e) {
             throw new DuplicateEmployeeIdException("Employee ID already exists");
