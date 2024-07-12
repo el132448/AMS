@@ -31,6 +31,7 @@ public class EmployeeController {
         return "employee";
     }
 
+    // dynamic load employee list
     @GetMapping("/api/employees")
     @ResponseBody
     public ResponseEntity<Page<Employee>> getEmployeeList(
@@ -56,6 +57,8 @@ public class EmployeeController {
         return "redirect:/employee";
     }
 
+    //===================================================================
+
     // link to employeeRegister page
     @GetMapping("/registration")
     public String employeeRegistration(Model model){
@@ -75,6 +78,8 @@ public class EmployeeController {
             return "employeeRegister";
         }
     }
+
+    //===================================================================
 
     // link to edit employee page
     @GetMapping("/{employeeId}")

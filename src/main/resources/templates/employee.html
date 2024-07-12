@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
     <title>社員情報一覧</title>
 
 <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"-->
 <!--          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->
 
-    <!-- Add jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Link to the external JavaScript file -->
     <script src="/js/employee.js"></script>
-
-    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="/css/employee.css">
 
 </head>
@@ -22,34 +17,27 @@
         <h1>社員情報一覧</h1>
 
         <!-- Filter Form -->
-        <form th:action="@{/employee}" method="get" style="margin-bottom: 20px;">
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <!-- Filter by Employee ID -->
-                <div>
-                    <label for="employeeId">社員ID:</label>
-                    <input type="text" id="employeeId" name="employeeId" th:value="${employeeId}">
-                </div>
+        <form id="filterForm">
+            <!-- Filter by Employee ID -->
+            <div>
+                <label for="employeeId">社員ID:</label>
+                <input type="text" id="employeeId" name="employeeId" th:value="${employeeId}">
+            </div>
 
-                <!-- Filter by Joining Date Range -->
-                <div>
-                    <label for="joiningDateFrom">入社年月日 From:</label>
-                    <input type="date" id="joiningDateFrom" name="joiningDateFrom" th:value="${joiningDateFrom}">
-                </div>
-                <div>
-                    <label for="joiningDateTo">To:</label>
-                    <input type="date" id="joiningDateTo" name="joiningDateTo" th:value="${joiningDateTo}">
-                </div>
+            <!-- Filter by Joining Date Range -->
+            <div>
+                <label for="joiningDateFrom">入社年月日 From:</label>
+                <input type="date" id="joiningDateFrom" name="joiningDateFrom" th:value="${joiningDateFrom}">
+            </div>
+            <div>
+                <label for="joiningDateTo">To:</label>
+                <input type="date" id="joiningDateTo" name="joiningDateTo" th:value="${joiningDateTo}">
+            </div>
 
-                <!-- Filter by Department -->
-                <div>
-                    <label for="department">所属:</label>
-                    <input type="text" id="department" name="department" th:value="${department}">
-                </div>
-
-                <!-- Submit Button -->
-                <div>
-                    <button type="submit">検索</button>
-                </div>
+            <!-- Filter by Department -->
+            <div>
+                <label for="department">所属:</label>
+                <input type="text" id="department" name="department" th:value="${department}">
             </div>
         </form>
 
