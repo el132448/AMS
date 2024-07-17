@@ -1,26 +1,36 @@
-/* Style for clickable rows */
-.clickable-row {
-    cursor: pointer;
-}
+/*!* Style for clickable rows *!*/
+/*.clickable-row {*/
+/*    cursor: pointer;*/
+/*}*/
 
-.clickable-row:hover {
-    background-color: #f5f5f5;
-}
+/*.clickable-row:hover {*/
+/*    background-color: #f5f5f5;*/
+/*}*/
 
-/* Padding for table cells */
-td {
-    padding: 5px;
-}
+/*!* Padding for table cells *!*/
+/*td {*/
+/*    padding: 5px;*/
+/*}*/
 
 /*=====================================================*/
-/* Filter Form Styles */
-#filterForm {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
+/*!* Filter Form Styles *!*/
+/*#filterForm {*/
+/*    margin-bottom: 20px;*/
+/*    display: flex;*/
+/*    gap: 10px;*/
+/*    align-items: center;*/
+/*}*/
 
+/*=====================================================*/
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -0.5px;
+    z-index: 1020;
+}
+.table th, .table td {
+    border: 1px solid #ddd; /* Border for table cells */
+}
 /*=====================================================*/
 /* Pagination container */
 #paginationControls .pagination {

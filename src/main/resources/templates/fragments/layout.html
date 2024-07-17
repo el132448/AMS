@@ -3,22 +3,29 @@
 <head>
     <title>Header</title>
     <link rel="stylesheet">
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
     <header th:fragment="header">
-        <nav>
-            <ul style="display: flex; /* Align items in a row */
+        <nav class="navbar navbar-expand-sm bg-light">
+            <div class="container-fluid">
+                <ul style="display: flex; /* Align items in a row */
                         list-style: none; /* Remove default list styling */
                         padding: 5px;">
-                <li style="padding: 5px;"><a th:href="@{/employee}">社員情報一覧</a></li>
-                <li style="padding: 5px;"><a th:href="@{/logout}">ログアウト</a></li>
-            </ul>
+                    <li style="padding: 5px;"><a th:href="@{/employee}">社員情報一覧</a></li>
+                    <li style="padding: 5px;"><a th:href="@{/logout}">ログアウト</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <footer th:fragment="footer">
-        <!-- Footer content -->
-        <p><small>Copyright &copy; 2024 勤怠管理システム All Rights Reserved.</small></p>
+        <div class="container-fluid">
+            <!-- Footer content -->
+            <p><small>Copyright &copy; 2024 勤怠管理システム All Rights Reserved.</small></p>
+        </div>
     </footer>
 
 </body>
