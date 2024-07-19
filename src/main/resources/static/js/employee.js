@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadEmployees(1);
 
     // Attach event listeners to filter input fields
-    document.querySelectorAll('#filterForm input').forEach(input => {
+    document.querySelectorAll('#filterForm input, #filterForm select').forEach(input => {
         input.addEventListener('change', function() {
             loadEmployees(1); // Reload with updated filter criteria
         });
@@ -63,25 +63,25 @@ function loadEmployees(page) {
             if (data.totalPages > 1) {
                 // Previous button
                 if (data.number > 0) {
-                    paginationControls.innerHTML += `<li><button onclick="loadEmployees(${data.number})">前へ</button></li>`;
+                    paginationControls.innerHTML += `<li class="page-item"><button class="page-link" onclick="loadEmployees(${data.number})">前へ</button></li>`;
                 } else {
-                    paginationControls.innerHTML += `<li><button disabled>前へ</button></li>`;
+                    paginationControls.innerHTML += `<li class="page-item disabled"><button class="page-link">前へ</button></li>`;
                 }
 
                 // Page number buttons
                 for (let i = 1; i <= data.totalPages; i++) {
                     if (i === data.number + 1) {
-                        paginationControls.innerHTML += `<li><button disabled>${i}</button></li>`;
+                        paginationControls.innerHTML += `<li class="page-item"><button class="page-link active">${i}</button></li>`;
                     } else {
-                        paginationControls.innerHTML += `<li><button onclick="loadEmployees(${i})">${i}</button></li>`;
+                        paginationControls.innerHTML += `<li class="page-item"><button class="page-link" onclick="loadEmployees(${i})">${i}</button></li>`;
                     }
                 }
 
                 // Next button
                 if (data.number < data.totalPages - 1) {
-                    paginationControls.innerHTML += `<li><button onclick="loadEmployees(${data.number + 2})">次へ</button></li>`;
+                    paginationControls.innerHTML += `<li class="page-item"><button class="page-link" onclick="loadEmployees(${data.number + 2})">次へ</button></li>`;
                 } else {
-                    paginationControls.innerHTML += `<li><button disabled>次へ</button></li>`;
+                    paginationControls.innerHTML += `<li class="page-item disabled"><button class="page-link">次へ</button></li>`;
                 }
             }
         })
