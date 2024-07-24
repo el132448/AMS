@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org" class="bg-light">
 <head>
     <meta charset="UTF-8">
     <title>社員情報登録</title>
@@ -10,36 +10,46 @@
 <body>
     <div th:replace="~{fragments/layout :: header}"></div>
 
-    <div class="container">
-        <h1>社員情報登録</h1>
+    <div class="container-fluid my-3 mx-auto col-lg-5 col-md-6 col-sm-8">
+        <h3>社員情報登録</h3>
         <form th:action="@{/employee/register}" method="post">
-            <label for="employeeId">社員ID</label>
-            <input type="text" id="employeeId" th:value="${employeeId}" name="employeeId">
-            <br>
-            <label for="employeeName">氏名</label>
-            <input type="text" id="employeeName" name="employeeName">
-            <br>
-            <input type="radio" id="男" name="employeeGender" value="男">
-            <label for="男">男</label>
-            <input type="radio" id="女" name="employeeGender" value="女">
-            <label for="女">女</label>
-            <input type="radio" id="その他" name="employeeGender" value="その他">
-            <label for="その他">その他</label>
-            <br>
-            <label for="employeeBirthDate">生年月日</label>
-            <input type="date" id="employeeBirthDate" name="employeeBirthDate">
-            <br>
-            <label for="employeeJoiningDate">入社年月日</label>
-            <input type="date" id="employeeJoiningDate" name="employeeJoiningDate">
-            <br>
-            <label for="employeeDepartment">所属</label>
-            <input type="text" id="employeeDepartment" name="employeeDepartment">
-            <br>
-            <label for="employeeEmail">メールアドレス</label>
-            <input type="email" id="employeeEmail" name="employeeEmail">
-            <br>
-
-            <button type="submit">登録</button>
+            <div class="mb-3">
+                <label for="employeeId" class="form-label">社員ID</label>
+                <input type="text" id="employeeId" th:value="${employeeId}" name="employeeId" class="form-control bg-light">
+            </div>
+            <div class="mb-3">
+                <label for="employeeName" class="form-label">氏名</label>
+                <input type="text" id="employeeName" name="employeeName" class="form-control bg-light">
+            </div>
+            <div class="mb-2">
+                <div class="form-label">性別</div>
+                <input type="radio" id="男" name="employeeGender" value="男">
+                <label for="男" class="form-label">男</label>
+                <input type="radio" id="女" name="employeeGender" value="女">
+                <label for="女" class="form-label">女</label>
+                <input type="radio" id="その他" name="employeeGender" value="その他">
+                <label for="その他" class="form-label">その他</label>
+            </div>
+            <div class="mb-3">
+                <label for="employeeBirthDate" class="form-label">生年月日</label>
+                <input type="date" id="employeeBirthDate" name="employeeBirthDate" class="form-control bg-light">
+            </div>
+            <div class="mb-3">
+                <label for="employeeJoiningDate" class="form-label">入社年月日</label>
+                <input type="date" id="employeeJoiningDate" name="employeeJoiningDate" class="form-control bg-light">
+            </div>
+            <div class="mb-3">
+                <label for="employeeDepartment" class="form-label">所属</label>
+                <input type="text" id="employeeDepartment" name="employeeDepartment" class="form-control bg-light">
+            </div>
+            <div class="mb-3">
+                <label for="employeeEmail" class="form-label">メールアドレス</label>
+                <input type="email" id="employeeEmail" name="employeeEmail" class="form-control bg-light">
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="btn btn-danger">登録</button>
+                <a th:href="@{/employee}" class="btn btn-primary">戻る</a>
+            </div>
         </form>
         <p th:text="${errorMessage}" style="color:red"></p>
     </div>

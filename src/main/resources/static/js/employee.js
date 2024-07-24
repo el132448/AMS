@@ -41,11 +41,11 @@ function loadEmployees(page) {
                 row.onclick = () => window.location.href = `/employee/${employee.employeeId}`;
 
                 row.innerHTML = `
-                <td class="checkbox-cell" onclick="stopPropagation(event)">
+                <td class="checkbox-cell sticky-col" onclick="stopPropagation(event)">
                     <input type="checkbox" value="${employee.employeeId}" name="deleteEmployeeIds">
                 </td>
-                <td>${employee.employeeId}</td>
-                <td>${employee.employeeName}</td>
+                <td class="sticky-col-2">${employee.employeeId}</td>
+                <td class="sticky-col-3">${employee.employeeName}</td>
                 <td>${employee.employeeGender}</td>
                 <td>${employee.employeeBirthDate}</td>
                 <td>${employee.employeeAge}</td>

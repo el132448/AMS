@@ -1,20 +1,59 @@
 .form-control, .form-select{
     width:auto;
     display:inline;
+    margin-bottom: .5rem;
 }
 
 /*=====================================================*/
 
-.sticky-top {
-    position: -webkit-sticky;
-    position: sticky;
-    top: -0.5px;
-    z-index: 1020;
+/*.sticky-top {*/
+/*    position: -webkit-sticky;*/
+/*    position: sticky;*/
+/*    top: -0.5px;*/
+/*    z-index: 1020;*/
+/*}*/
+
+.table{
+    border-collapse: separate; /* Don't collapse */
+    border-spacing: 0;
 }
+
 .table th, .table td {
     border: 1px solid #ddd; /* Border for table cells */
     white-space: nowrap !important;
 }
+
+.sticky-col {
+    position: sticky;
+    left: 0;
+    background-color: #f8f9fa; /* Matches the table header background */
+    z-index: 1;
+    min-width: 50px;
+}
+.sticky-col-2 {
+    position: sticky;
+    left: 50px; /* Adjust according to your column width */
+    background-color: #f8f9fa; /* Matches the table header background */
+    z-index: 1;
+    min-width: 70px;
+}
+
+.sticky-col-3 {
+    position: sticky;
+    left: 120px; /* Adjust according to your column width */
+    background-color: #f8f9fa; /* Matches the table header background */
+    z-index: 1;
+    min-width: 100px;
+}
+
+/*!* Apply specific widths for remaining columns *!*/
+/*.table th:nth-child(4) { width: 10%; } !* 性別 *!*/
+/*.table th:nth-child(5) { width: 15%; } !* 生年月日 *!*/
+/*.table th:nth-child(6) { width: 10%; } !* 年齢 *!*/
+/*.table th:nth-child(7) { width: 15%; } !* 入社年月日 *!*/
+/*.table th:nth-child(8) { width: 15%; } !* 所属 *!*/
+/*.table th:nth-child(9) { width: 25%; } !* メールアドレス *!*/
+
 /*=====================================================*/
 
 /*!* Style for clickable rows *!*/
